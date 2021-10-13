@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar articulo</title>
+</head>
+<body>
+  <form id="form" method="post" onsubmit="return onSubmit(event)">
+  <!-- <form> -->
+    <input type="text" placeholder="Nombre" name="name">
+    <input type="text" placeholder="Categoría" name="category">
+    <input type="number" placeholder="Precio" name="price">
+    <!-- <input type="button" value="Enviar" onclick="onSubmit(event)"> -->
+    <input type="submit" value="Enviar">
+  </form>
+  <script>
+    const onSubmit = (event) => {
+      const form = document.getElementById("form");
+      const name = form.elements['name'].value;
+      const category = form.elements['category'].value;
+      const price = form.elements['price'].value;
+      event.preventDefault();
+      console.log(name);
+      console.log(category);
+      console.log(price);
+      fetch(`/add-article/${name}/${category}/${price}/`).then(res => res.json()).then(json => console.log(json));
+    };
+  </script>
+</body>
+</html>
