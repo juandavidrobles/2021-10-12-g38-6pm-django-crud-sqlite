@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-from gestor.views import add_article, add_article_form, hello
+from gestionBD.views import add_article, admin_articles, admin_root
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello),
-    path('form-article/', add_article_form),
-    path('add-article/<str:name>/<str:category>/<int:price>/', add_article)
+    # path('hello/', hello),
+    # path('form-article/', add_article_form),
+    # path('add-article/<str:name>/<str:category>/<int:price>/', add_article),
+    path('admin-panel/', admin_root),
+    path('admin-panel/articles/', admin_articles),
+    # API
+    path('api/add-article/', add_article),
 ]
